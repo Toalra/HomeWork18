@@ -1,15 +1,17 @@
 gradlew
 gradlew.bat
 batsettings.gradle
-gradle
 build/
 gradle/wrapper
 
+.gradle
+
+!**/src/main/**/build/
+!**/src/test/**/build/
+gradle
+
 ### IntelliJ IDEA ###
-.idea/modules.xml
-.idea/jarRepositories.xml
-.idea/compiler.xml
-.idea/libraries/
+.idea
 *.iws
 *.iml
 *.ipr
