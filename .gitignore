@@ -1,11 +1,9 @@
 gradlew
 gradlew.bat
 batsettings.gradle
-.gradle
+gradle
 build/
-!gradle/wrapper/gradle-wrapper.jar
-!**/src/main/**/build/
-!**/src/test/**/build/
+gradle/wrapper
 
 ### IntelliJ IDEA ###
 .idea/modules.xml
