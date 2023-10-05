@@ -1,6 +1,6 @@
-package quru.qa.in.reqres.models;
+package quru.qa.in.reqres.models.pojo;
 
-public class LoginResponseModel {
+public class LoginResponsePojoModel {
 
     String token;
 
