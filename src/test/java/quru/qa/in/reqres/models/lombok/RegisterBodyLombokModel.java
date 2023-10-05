@@ -3,7 +3,8 @@ package quru.qa.in.reqres.models.lombok;
 import lombok.Data;
 
 @Data
-public class LoginResponseLombokModel {
+public class RegisterBodyLombokModel {
 
-    String token;
+    String email, password;
+
 }
