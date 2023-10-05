@@ -2,6 +2,8 @@ package quru.qa.tests;
 
 import org.junit.jupiter.api.Test;
 import quru.qa.TestBase;
+import quru.qa.in.reqres.models.lombok.LoginBodyLombokModel;
+import quru.qa.in.reqres.models.lombok.LoginResponseLombokModel;
 import quru.qa.in.reqres.models.lombok.RegisterBodyLombokModel;
 import quru.qa.in.reqres.models.lombok.RegisterResponseLombokModel;
 
@@ -35,34 +37,37 @@ public class StatusTests extends TestBase {
                     .extract().as(RegisterResponseLombokModel.class);
 
             assertEquals("QpwL5tke4Pnpja7X4", response.getToken());
-
-
     }
     @Test
     void successLogin() {
-        String regBody = "{\n" +
-                "    \"email\": \"eve.holt@reqres.in\",\n" +
-                "    \"password\": \"cityslicka\"\n" +
-                "}";
-        given()
-                .log().uri()
-                .log().body()
-                .contentType(JSON)
-                .body(regBody)
-                .post("/login")
-                .then()
-                .log().status()
-                .log().body()
-                .statusCode(200)
-                .body("token", is("QpwL5tke4Pnpja7X4"));
+        LoginBodyLombokModel regBody = new LoginBodyLombokModel();
+        regBody.setEmail("eve.holt@reqres.in");
+        regBody.setPassword("cityslicka");
+
+        LoginResponseLombokModel loginResponse = step("Login request", () ->
+                given()
+                        .log().uri()
+                        .log().body()
+                        .contentType(JSON)
+                        .body(regBody)
+                        .post("/login")
+                        .then()
+                        .log().status()
+                        .log().body()
+                        .statusCode(200)
+                        .extract().as(LoginResponseLombokModel.class));
+
+        step("Register verify", () ->
+                assertEquals("QpwL5tke4Pnpja7X4", loginResponse.getToken()));
     }
 
     @Test
     void successCreateUsers() {
-        String regBody = "{\n" +
-                "    \"name\": \"morpheus\",\n" +
-                "    \"job\": \"leader\"\n" +
-                "}";
+
+        LoginBodyLombokModel regBody = new LoginBodyLombokModel();
+        regBody.setEmail("morpheus");
+        regBody.setPassword("leader");
+
         given()
                 .log().uri()
                 .log().body()

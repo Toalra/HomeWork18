@@ -1,6 +1,5 @@
 package quru.qa.tests;
 
-import io.qameta.allure.restassured.AllureRestAssured;
 import org.junit.jupiter.api.Test;
 import quru.qa.TestBase;
 import quru.qa.in.reqres.models.lombok.*;
@@ -10,8 +9,9 @@ import static io.restassured.RestAssured.given;
 import static io.restassured.http.ContentType.JSON;
 import static org.hamcrest.Matchers.notNullValue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static quru.qa.specs.RegisterSpec.registerRequestSpec;
 
-public class StatusAllureTests extends TestBase {
+public class StatusSpecsTests extends TestBase {
 
     @Test
     void successAllureRegister() {
@@ -20,11 +20,7 @@ public class StatusAllureTests extends TestBase {
         regBody.setPassword("pistol");
 
         RegisterResponseLombokModel response = step("Register request", () ->
-            given()
-                    .filter(new AllureRestAssured())
-                    .log().uri()
-                    .log().body()
-                    .contentType(JSON)
+            given(registerRequestSpec)
                     .body(regBody)
                     .post("/register")
                     .then()

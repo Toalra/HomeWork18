@@ -3,7 +3,8 @@ package quru.qa.in.reqres.models.lombok;
 import lombok.Data;
 
 @Data
-public class RegisterResponseLombokModel {
+public class CreateUserBodyLombokModel {
 
-    String id, token;
+    String name, job;
+
 }
