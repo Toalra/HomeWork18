@@ -10,6 +10,7 @@ import static io.restassured.http.ContentType.JSON;
 import static org.hamcrest.Matchers.notNullValue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static quru.qa.specs.RegisterSpec.registerRequestSpec;
+import static quru.qa.specs.RegisterSpec.registerResponseSpec;
 
 public class StatusSpecsTests extends TestBase {
 
@@ -24,12 +25,10 @@ public class StatusSpecsTests extends TestBase {
                     .body(regBody)
                     .post("/register")
                     .then()
-                    .log().status()
-                    .log().body()
-                    .statusCode(200)
+                    .spec(registerResponseSpec)
                     .extract().as(RegisterResponseLombokModel.class));
         step("Register verify", () -> {
-                    assertEquals(4, response.getId());
+                    assertEquals("4", response.getId());
                     assertEquals("QpwL5tke4Pnpja7X4", response.getToken());
         });
     }
@@ -40,7 +39,7 @@ public class StatusSpecsTests extends TestBase {
         regBody.setEmail("eve.holt@reqres.in");
         regBody.setPassword("cityslicka");
 
-        LoginResponseLombokModel loginResponse = step("Register request", () ->
+        LoginResponseLombokModel loginResponse = step("Login request", () ->
         given()
                 .log().uri()
                 .log().body()
