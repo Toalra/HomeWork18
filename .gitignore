@@ -2,7 +2,8 @@ gradlew
 gradlew.bat
 batsettings.gradle
 build/
-gradle/wrapper
+gradle
+.idea
 
 .gradle
 
