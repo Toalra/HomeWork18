@@ -3,7 +3,7 @@ package quru.qa.tests;
 import io.qameta.allure.restassured.AllureRestAssured;
 import org.junit.jupiter.api.Test;
 import quru.qa.TestBase;
-import quru.qa.in.reqres.models.lombok.*;
+import quru.qa.in.reqres.models.*;
 
 import static io.qameta.allure.Allure.step;
 import static io.restassured.RestAssured.given;
@@ -112,17 +112,6 @@ public class StatusAllureTests extends TestBase {
         });
 
     }
-//    @Test
-//    void successDeleteUsers() {
-//
-//        step("Delete user", () -> {
-//            given()
-//                    .spec(deletePersonRequestSpec)
-//                    .delete("/users/2")
-//                    .then()
-//                    .spec(deletePersonResponseSpec);
-//        });
-//    }
     @Test
     void successDeleteUsers() {
 

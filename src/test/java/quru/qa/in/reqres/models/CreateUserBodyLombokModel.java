@@ -1,4 +1,4 @@
-package quru.qa.in.reqres.models.lombok;
+package quru.qa.in.reqres.models;
 
 import lombok.Data;
 

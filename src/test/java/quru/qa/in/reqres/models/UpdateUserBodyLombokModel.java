@@ -1,10 +1,11 @@
-package quru.qa.in.reqres.models.lombok;
+package quru.qa.in.reqres.models;
 
 import lombok.Data;
 
 @Data
 public class UpdateUserBodyLombokModel {
 
-    String name, job;
+    String name;
+    String job;
 
 }
