@@ -15,8 +15,7 @@ public class UpdateUserSpec {
             .filter(withCustomTemplates())
             .log().uri()
             .log().body()
-            .contentType(JSON)
-            .basePath("/api");
+            .contentType(JSON);
 
     public static ResponseSpecification updateUserResponseSpec = new ResponseSpecBuilder()
             .log(STATUS)

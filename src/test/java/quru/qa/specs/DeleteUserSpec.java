@@ -15,8 +15,7 @@ public class DeleteUserSpec {
             .filter(withCustomTemplates())
             .log().uri()
             .log().body()
-            .contentType(JSON)
-            .basePath("/api");
+            .contentType(JSON);
 
     public static ResponseSpecification deleteUserResponseSpec = new ResponseSpecBuilder()
             .log(STATUS)

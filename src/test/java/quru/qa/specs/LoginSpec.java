@@ -15,8 +15,7 @@ public class LoginSpec {
             .filter(withCustomTemplates())
             .log().uri()
             .log().body()
-            .contentType(JSON)
-            .basePath("/api");
+            .contentType(JSON);
 
     public static ResponseSpecification loginResponseSpec = new ResponseSpecBuilder()
             .log(STATUS)

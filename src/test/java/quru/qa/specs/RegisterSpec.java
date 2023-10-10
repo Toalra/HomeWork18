@@ -14,8 +14,7 @@ public class RegisterSpec {
             .filter(withCustomTemplates())
             .log().uri()
             .log().body()
-            .contentType(JSON)
-            .basePath("/api");
+            .contentType(JSON);
 
     public static ResponseSpecification registerResponseSpec = new ResponseSpecBuilder()
             .log(STATUS)

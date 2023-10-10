@@ -16,8 +16,7 @@ public class CreateUserSpec {
             .filter(withCustomTemplates())
             .log().uri()
             .log().body()
-            .contentType(JSON)
-            .basePath("/api");
+            .contentType(JSON);
 
     public static ResponseSpecification createUserResponseSpec = new ResponseSpecBuilder()
             .log(STATUS)
